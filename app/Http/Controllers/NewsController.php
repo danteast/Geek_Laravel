@@ -12,18 +12,15 @@ class Newscontroller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
-    }
-    public function newsList(int $id) {
         $newObj = new News();
-        $news = $newObj->getAllNews();
+        $checkedCat = $newObj->getCatNews($id);
 
     // $checkedCat =  $this->newsArr[$id-1];
-    $checkedCat =  $news;
     return view('task2/newsList', ['checkedCat'=>$checkedCat]);
-}
+    }
+
 
 public function checkedNew(int $cat_id, int $new_id) {
     $checkedNew = $this->newsArr[$cat_id-1]['cat_news'][$new_id-1];
@@ -58,9 +55,12 @@ public function checkedNew(int $cat_id, int $new_id) {
      * @param  \App\Models\News  $news
      * @return \Illuminate\Http\Response
      */
-    public function show(News $news)
+    public function show(News $news, int $id)
     {
-        //
+        $newObj = new News();
+        $checkedNew = $newObj->getNewsById($id);
+    // echo $checkedNew['new_title'];
+    return view('task2/checkedNew1', ['checkedNew'=>$checkedNew]);
     }
 
     /**

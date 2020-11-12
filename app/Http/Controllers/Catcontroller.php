@@ -14,7 +14,11 @@ class Catcontroller extends Controller
      */
     public function index()
     {
-        return view('task2/index');
+        $newObj = new Category();
+        $categoryList = $newObj->getAllCategories();
+    // echo $checkedNew['new_title'];
+    return view('task2/CategoryList', ['categoryList'=>$categoryList]);
+
     }
 
 
@@ -52,6 +56,7 @@ class Catcontroller extends Controller
      */
     public function show(Category $category)
     {
+
         return view('task2/newsCatList', ['newsArr'=>$this->newsArr]);
     }
 

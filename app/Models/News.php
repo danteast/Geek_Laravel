@@ -11,11 +11,22 @@ class News extends Model
 
     protected $table = 'news';
 
-    public function getAllNews(){
-    return \DB::select("SELECT id, title, slug, author, description, updated_at FROM {$this->table}");
+    public function getCatNews($id){
+
+
+        return \DB::table('category_has_news')
+            ->join('categories', 'categories.id','=','category_has_news.category_id')
+            ->join('news', 'category_has_news.news_id', '=', 'news.id')
+            ->select('categories.title', 'news.id','news.title', 'news.description', 'news.author', 'news.updated_at')
+            ->where('categories.id', '=', $id)
+            ->get();
+            //
+
+
 
     }
     public function getNewsById($id){
 
+        return \DB::table($this->table)->where(['id' => $id])->first();
     }
 }

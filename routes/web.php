@@ -22,18 +22,22 @@ Route::get('/', function () {
 
 
 
-// Route::group(['prefix'=>'admin'], function() {
-//     route::get('news', [\App\Http\Controllers\admin\NewsController::class, 'index']);
-//     route::get('news/create', [\App\Http\Controllers\admin\NewsController::class, 'create']);
-//     route::get('news/edit{id}', [\App\Http\Controllers\admin\NewsController::class, 'edit'])->where('id', '\d+');
-//     route::get('news/delete{id}', [\App\Http\Controllers\admin\NewsController::class, 'destroy'])->where('id', '\d+');
-// });
-
-Route::get('index/', [\App\Http\Controllers\CatController::class, 'index']);
+Route::get('index/', [\App\Http\Controllers\HomePageController::class, 'index']);
 Route::get('backform/', [\App\Http\Controllers\CatController::class, 'backform']);
-Route::get('news/', [\App\Http\Controllers\CatController::class, 'show'])->name('news');
-Route::get('news/{id}', [\App\Http\Controllers\NewsController::class, 'newsList'])->where('id', '\d+')->name('news');;
-Route::get('news/{cat_id}/{new_id}', [\App\Http\Controllers\NewsController::class, 'checkedNew'])->where('new_id', '\d+');
+Route::get('NewsCategories/', [\App\Http\Controllers\CatController::class, 'index'])->name('news');
+Route::get('news/{id}', [\App\Http\Controllers\NewsController::class, 'index'])->where('id', '\d+')->name('news');
+Route::get('news/{cat_id}/{new_id}', [\App\Http\Controllers\NewsController::class, 'cshow'])->where('new_id', '\d+');
+
+
+Route::get('new/{id}', [\App\Http\Controllers\NewsController::class, 'show'])->where('id', '\d+');
+
+
+Route::group(['prefix'=>'admin'], function() {
+    route::get('news', [\App\Http\Controllers\admin\NewsController::class, 'index']);
+    route::get('news/create', [\App\Http\Controllers\admin\NewsController::class, 'create']);
+    route::get('news/edit{id}', [\App\Http\Controllers\admin\NewsController::class, 'edit'])->where('id', '\d+');
+    route::get('news/delete{id}', [\App\Http\Controllers\admin\NewsController::class, 'destroy'])->where('id', '\d+');
+});
 
 // Auth::routes();
 
