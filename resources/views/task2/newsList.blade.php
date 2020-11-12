@@ -14,12 +14,13 @@
 
         <div class="blog_details">
             @forelse($checkedCat as $new)
-                    <div class="trand-right-cap">
-                        <h4><a href="/news/{{ $new->id }}">{{ $new->title }}</a></h4>
+            dd($id);
+                    {{-- <div class="trand-right-cap">
+                        <h4><a href="/news/{{ $new->id }}/{{ $new->$id }}">{{ $new->title }}</a></h4>
                         <p>{{ $new->description}}</p>
                         <p><strong>Автор:{{ $new->author}}</strong> <i>Обновлено: {{ $new->updated_at}}</i></p>
                     </div>
-                    <hr>
+                    <hr> --}}
             @empty
             <h4>Новостей нет</h4>
             @endforelse
