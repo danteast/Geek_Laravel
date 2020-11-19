@@ -14,15 +14,16 @@
 
         <div class="blog_details">
             @forelse($news as $new)
-            dd($id);
-                    {{-- <div class="trand-right-cap">
-                        <h4><a href="/news/{{ $new->id }}/{{ $new->$id }}">{{ $new->title }}</a></h4>
+                    <div class="trand-right-cap">
+                        <h4><a href="/news/{{ $new->id }}">{{ $new->title }}</a></h4>
                         <p>{{ $new->description}}</p>
-                        <p><strong>Автор:{{ $new->author}}</strong> <i>Обновлено: {{ $new->updated_at}}</i></p>
+                        <p><strong>Автор:&nbsp;{{ $new->author}} &nbsp;&nbsp;&nbsp;</strong>
+                            <i>Обновлено:&nbsp;{{ $new->updated_at->format('d-m-Y H:i')}}</i></p>
                     </div>
-                    <hr> --}}
+                    <hr>
             @empty
             <h4>Новостей нет</h4>
             @endforelse
-        </div> --}}
+            {{ $news->links() }}
+        </div>
 @endsection

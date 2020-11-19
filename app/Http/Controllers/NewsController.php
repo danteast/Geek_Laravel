@@ -14,12 +14,16 @@ class Newscontroller extends Controller
      */
     public function index($id)
     {
+        $news = News::all();
+        return view('task2/newsList', $id, ['news'=>$news]);
+
 
         $newObj = new News();
         // $checkedCat = $newObj->getCatNews($id);
 
-    // $checkedCat =  $this->newsArr[$id-1];
+    $checkedCat =  $this->newsArr[$id-1];
     return view('task2/newsList', $id, ['checkedCat'=>$checkedCat]);
+
     }
 
 

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
-use Database\Seeders\CategorySeeder;
 use Illuminate\Http\Request;
 
-class Catcontroller extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,22 +15,8 @@ class Catcontroller extends Controller
      */
     public function index()
     {
-
-    $categories = Category::all();
-    return view('task2/CategoryList', ['categoryList'=>$categories]);
-
-    // Конструктор запросов
-    //     $newObj = new Category();
-    //     $categoryList = $newObj->getAllCategories();
-    // return view('task2/CategoryList', ['categoryList'=>$categoryList]);
-
+        //
     }
-
-
-    public function backform() {
-        return view('task2/backform');
-    }
-
 
     /**
      * Show the form for creating a new resource.
@@ -50,7 +36,7 @@ class Catcontroller extends Controller
      */
     public function store(Request $request)
     {
-        dump($request->all());
+        //
     }
 
     /**
@@ -61,8 +47,7 @@ class Catcontroller extends Controller
      */
     public function show(Category $category)
     {
-
-        return view('task2/newsCatList', ['newsArr'=>$this->newsArr]);
+        //
     }
 
     /**
